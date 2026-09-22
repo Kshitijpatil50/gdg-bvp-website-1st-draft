@@ -58,6 +58,18 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto">
+        <motion.div
+          className="flex items-center justify-center gap-3 mb-8"
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="google-g-mark" aria-hidden="true">G</span>
+          <span className="font-mono text-xs uppercase tracking-[0.24em] text-muted-foreground">
+            Google Developer Groups
+          </span>
+        </motion.div>
+
         {/* Main Title with word reveals */}
         <motion.h1
           className="text-center mb-6 leading-tight"

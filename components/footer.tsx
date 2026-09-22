@@ -24,9 +24,12 @@ export function Footer() {
         >
           {/* About */}
           <div>
-            <h3 className="font-display font-bold text-lg mb-4">
-              GDG on Campus
-            </h3>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="google-g-mark google-g-mark-sm" aria-hidden="true">G</span>
+              <h3 className="font-display font-bold text-lg">
+                GDG on Campus
+              </h3>
+            </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               {siteData.chapter.college}, Pune. Building the next generation of
               developers through community, collaboration, and code.
