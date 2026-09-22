@@ -51,11 +51,15 @@ export function ActivityHeatmap() {
     return grouped;
   }, [heatmapDays]);
 
-  const getColor = (events: number) => {
+  const getColor = (events: number, index: number) => {
     if (events === 0) return 'bg-card border-border';
-    if (events === 1)
-      return 'bg-blue-500/20 border-blue-500/50 shadow-md shadow-blue-500/20';
-    return 'bg-blue-600/30 border-blue-400/60 shadow-lg shadow-blue-500/30';
+    const colors = [
+      'bg-[#4285F4]/20 border-[#4285F4]/60 shadow-md shadow-[#4285F4]/20',
+      'bg-[#34A853]/20 border-[#34A853]/60 shadow-md shadow-[#34A853]/20',
+      'bg-[#FBBC05]/20 border-[#FBBC05]/60 shadow-md shadow-[#FBBC05]/20',
+      'bg-[#EA4335]/20 border-[#EA4335]/60 shadow-md shadow-[#EA4335]/20',
+    ];
+    return colors[index % colors.length];
   };
 
   return (
@@ -69,7 +73,7 @@ export function ActivityHeatmap() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-            Activity Timeline
+            <span className="google-spectrum">Activity</span> Timeline
           </h2>
           <p className="text-muted-foreground text-lg">
             Our events throughout 2024. Hover to see what happened.
@@ -94,7 +98,8 @@ export function ActivityHeatmap() {
                     <motion.div
                       key={day.date}
                       className={`w-3 h-3 md:w-4 md:h-4 border rounded cursor-pointer transition-all duration-200 ${getColor(
-                        day.events
+                        day.events,
+                        weekIdx + dayIdx
                       )}`}
                       whileHover={{ scale: 1.5 }}
                       onMouseEnter={() => {
@@ -148,11 +153,11 @@ export function ActivityHeatmap() {
                 <div
                   key={i}
                   className={`w-3 h-3 border rounded ${
-                    i === 0
-                      ? 'bg-card border-border'
-                      : i === 1
-                        ? 'bg-blue-500/20 border-blue-500/50'
-                        : 'bg-blue-600/30 border-blue-400/60'
+                      i === 0
+                        ? 'bg-card border-border'
+                        : i === 1
+                          ? 'bg-[#4285F4]/20 border-[#4285F4]/60'
+                          : 'bg-[#34A853]/20 border-[#34A853]/60'
                   }`}
                 />
               ))}
