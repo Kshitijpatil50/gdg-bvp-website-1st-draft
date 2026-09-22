@@ -53,11 +53,23 @@ export function Hero() {
     <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden">
       {/* Gradient background glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/3 w-96 h-96 rounded-full google-halo" />
+        <div className="absolute bottom-1/4 right-1/3 w-96 h-96 rounded-full bg-[radial-gradient(circle,rgba(52,168,83,.1),transparent_65%)] blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto">
+        <motion.div
+          className="flex items-center justify-center gap-3 mb-8"
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="google-g-mark" aria-hidden="true">G</span>
+          <span className="font-mono text-xs uppercase tracking-[0.24em] text-muted-foreground">
+            Google Developer Groups
+          </span>
+        </motion.div>
+
         {/* Main Title with word reveals */}
         <motion.h1
           className="text-center mb-6 leading-tight"
@@ -68,7 +80,7 @@ export function Hero() {
           {titleWords.map((word, i) => (
             <motion.span
               key={i}
-              className="inline-block mr-3 text-5xl md:text-7xl font-display font-bold text-foreground"
+              className={`inline-block mr-3 text-5xl md:text-7xl font-display font-bold ${i === 0 ? 'google-spectrum' : 'text-foreground'}`}
               variants={wordVariants}
             >
               {word}
@@ -147,7 +159,7 @@ export function Hero() {
           transition={{ delay: 2.8, duration: 0.8 }}
         >
           <motion.button
-            className="px-8 py-3 bg-accent text-primary-foreground rounded-lg font-display font-semibold hover:shadow-lg transition-all duration-300"
+            className="px-8 py-3 bg-[linear-gradient(100deg,#4285f4,#34a853)] text-white rounded-lg font-display font-semibold hover:shadow-[0_0_28px_rgba(66,133,244,.3)] transition-all duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
