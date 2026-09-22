@@ -5,7 +5,7 @@ import { siteData } from '@/lib/data';
 import { Code2, Share2, Mail } from 'lucide-react';
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
+  const currentYear = 2026;
 
   const linkHover = {
     y: -2,

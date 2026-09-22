@@ -15,11 +15,11 @@ export function ActivityHeatmap() {
     );
 
     const days = [];
-    const startDate = new Date(2024, 0, 1);
-    const endDate = new Date(2024, 11, 31);
+    const startDate = new Date(Date.UTC(2024, 0, 1));
+    const endDate = new Date(Date.UTC(2024, 11, 31));
 
-    for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-      const dateStr = d.toISOString().split('T')[0];
+    for (let d = new Date(startDate); d <= endDate; d.setUTCDate(d.getUTCDate() + 1)) {
+      const dateStr = d.toISOString().slice(0, 10);
       days.push({
         date: dateStr,
         events: dataMap.get(dateStr)?.events || 0,

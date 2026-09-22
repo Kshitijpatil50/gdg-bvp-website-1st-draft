@@ -4,6 +4,12 @@ import { motion } from 'framer-motion';
 import { siteData } from '@/lib/data';
 import { Users, Code } from 'lucide-react';
 
+function formatEventDate(date: string) {
+  const [year, month, day] = date.slice(0, 10).split('-').map(Number);
+  const monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][month - 1];
+  return `${monthName} ${day}, ${year}`;
+}
+
 export function Events() {
   const getCategoryColor = (category: string) => {
     switch (category) {
@@ -102,11 +108,7 @@ export function Events() {
                         <span>{event.attendees} attended</span>
                       </div>
                       <span className="font-mono">
-                        {new Date(event.date).toLocaleDateString('en-US', {
-                          month: 'short',
-                          day: 'numeric',
-                          year: 'numeric',
-                        })}
+                        {formatEventDate(event.date)}
                       </span>
                     </div>
                   </div>
